@@ -7,7 +7,7 @@ class Solution {
             dp[i] = new HashSet<>();
         }
     
-        for (int i = 1; i < 9; i++) 
+        for (int i = 1; i <= 8; i++) 
         {  
             dp[i].add(Integer.parseInt(String.valueOf(N).repeat(i)));
             for (int j = 1; j < i; j++) 
