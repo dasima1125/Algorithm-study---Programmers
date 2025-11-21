@@ -4,8 +4,8 @@ class Solution {
     public static int[] solution(String[] genres, int[] plays) {
         
         List<Integer> answer = new ArrayList<>();
-        Map<String, Integer>     countMap = new HashMap<>(); //장르별 재생된 수 맵 
-        Map<String, List<int[]>> orderMap = new HashMap<>(); //장르별 곡 맵
+        HashMap<String, Integer>     countMap = new HashMap<>(); //장르별 재생된 수 맵 
+        HashMap<String, List<int[]>> orderMap = new HashMap<>(); //장르별 곡 맵
 
         for (int i = 0; i < genres.length; i++) 
             addMap(countMap, orderMap, genres[i], i, plays[i]);
