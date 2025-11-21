@@ -2,26 +2,26 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
-        
+        Queue<Integer> queue = new LinkedList<>();
         List<Integer> result = new ArrayList<>();
-        
-        int currentMaxDay = (int)Math.ceil((100.0 - progresses[0]) / speeds[0]);
-        int count = 1;
-        
-        for(int i = 1; i < progresses.length; i++) 
+
+        for(int i = 0; i < progresses.length; i++) 
         {
-            int day = (int)Math.ceil((100.0 - progresses[i]) / speeds[i]);
-            
-            if(day <= currentMaxDay) count++;
-            else 
-            {
-                result.add(count);
-                currentMaxDay = day;
-                count = 1;
-            }
+            int days = (int)Math.ceil((100.0 - progresses[i]) / speeds[i]);
+            queue.offer(days);
         }
-        
-        result.add(count);
+        while(!queue.isEmpty()) 
+        {
+            int current = queue.poll(); 
+            int count = 1;
+
+            while(!queue.isEmpty() && queue.peek() <= current) 
+            {
+                queue.poll();
+                count++;
+            }
+            result.add(count); 
+        }
         return result.stream().mapToInt(i -> i).toArray();
     }
 }
