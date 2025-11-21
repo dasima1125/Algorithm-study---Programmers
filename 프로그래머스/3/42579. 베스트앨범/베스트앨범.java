@@ -30,14 +30,12 @@ class Solution {
             // 3. 고유 번호가 낮은 노래를 먼저 수록.ordermap [0]인수(순서) 기준으로 정렬
             songList.sort((a,b) -> a[0]);
             
-            for (int[] song : songList) {
-                if (count >= 2) break;
-                answer.add(song[0]);
+            while (count < 2 && count < songList.size()) //두개까지만 넣기
+            {
+                answer.add(songList.get(count)[0]);
                 count++;
             }
-            
         }
-        
         return answer.stream().mapToInt(Integer::intValue).toArray();
     }
 }
